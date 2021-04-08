@@ -24,6 +24,7 @@ const validationSchema = yup.object().shape({
     .email("E-mail inválido")
     .required("Preenchimento obrigatório"),
   password: yup.string().required("Preenchimento obrigatório"),
+  username: yup.string().required("Preenchimento obrigatório"),
 });
 
 export default function Home() {
@@ -31,13 +32,14 @@ export default function Home() {
     onSubmit: async (values, form) => {
       const user = await firebase
         .auth()
-        .signInWithEmailAndPassword(values.email, values.password);
+        .createUserWithEmailAndPassword(values.email, values.password);
       console.log("user", user);
     },
     validationSchema,
     initialValues: {
       email: "",
       password: "",
+      username: "",
     },
   });
 
@@ -77,6 +79,23 @@ export default function Home() {
           )}
         </FormControl>
 
+        <FormControl id="username" p={4} isRequired>
+          <InputGroup size="lg">
+            <InputLeftAddon children="clock.word/" />
+            <Input
+              type="username"
+              value={formik.values.username}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            />
+          </InputGroup>
+          {formik.touched.username && (
+            <FormHelperText textColor="#e74c3c">
+              {formik.errors.username}
+            </FormHelperText>
+          )}
+        </FormControl>
+
         <Box p={4}>
           <Button
             width="100%"
@@ -88,8 +107,8 @@ export default function Home() {
           </Button>
         </Box>
       </Box>
-      <Link href="/signup">
-        <a>Ainda não tem uma conta? Cadastre-se</a>
+      <Link href="/">
+        <a>Já tem uma conta? Faça o login</a>
       </Link>
     </Container>
   );
