@@ -13,7 +13,8 @@ import {
   FormHelperText,
 } from "@chakra-ui/react";
 
-import firebase, { persistenceMode } from "../../config/firebase";
+import { firebaseClient } from "../../config/firebase";
+import { persistenceMode } from "../../config/firebase/client";
 import { Logo } from "../Logo";
 
 const validationSchema = yup.object().shape({
@@ -27,8 +28,8 @@ const validationSchema = yup.object().shape({
 export const Login = () => {
   const formik = useFormik({
     onSubmit: async (values, form) => {
-      firebase.auth().setPersistence(persistenceMode);
-      const user = await firebase
+      firebaseClient.auth().setPersistence(persistenceMode);
+      const user = await firebaseClient
         .auth()
         .signInWithEmailAndPassword(values.email, values.password);
       console.log("user", user);
