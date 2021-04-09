@@ -2,7 +2,7 @@ import { Container } from "@chakra-ui/layout";
 import { Spinner } from "@chakra-ui/spinner";
 import { useEffect, useState } from "react";
 import { Agenda, Login } from "../components";
-import { firebaseClient } from "../config/firebase";
+import { firebaseClient } from "../config/firebase/client";
 
 function Home() {
   const [auth, setAuth] = useState({

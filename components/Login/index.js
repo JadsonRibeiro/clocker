@@ -13,8 +13,7 @@ import {
   FormHelperText,
 } from "@chakra-ui/react";
 
-import { firebaseClient } from "../../config/firebase";
-import { persistenceMode } from "../../config/firebase/client";
+import { persistenceMode, firebaseClient } from "../../config/firebase/client";
 import { Logo } from "../Logo";
 
 const validationSchema = yup.object().shape({
