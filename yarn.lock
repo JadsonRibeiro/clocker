@@ -1547,13 +1547,13 @@
   integrity sha512-Jj2xW+8+8XPfWGkv9HPv/uR+Qrmq37NPYT352wf7MvE9LrstpLVmFg3LqG6MCRr5miLAom5sen2gZ+iOhVDeRA==
 
 "@firebase/analytics@0.6.8":
-  version "0.6.8-20213623619"
-  resolved "https://registry.yarnpkg.com/@firebase/analytics/-/analytics-0.6.8-20213623619.tgz#285b7285eb635b97e822e3502a8a5b56415d509b"
-  integrity sha512-Vqz4ZKuJvIRmvR+C3xtxbBylEX2zdQ2piiF1sIuSjnDl/HskvFK1fNBxxnLuMZ9PuwaTY47cX0Fml2pag95Ldg==
+  version "0.6.8"
+  resolved "https://registry.yarnpkg.com/@firebase/analytics/-/analytics-0.6.8.tgz#ec69a8673df2e0381bdebc892d28448e2d97ee8a"
+  integrity sha512-cPbQIQo3uqpImtiGIB42F9s9fw8cPseCj1ZMR3VshL6u/6kzC9ptOpgg8PMCLOgZvBwC993LbT1UOTuufTd49Q==
   dependencies:
     "@firebase/analytics-types" "0.4.0"
-    "@firebase/component" "0.4.0-20213623619"
-    "@firebase/installations" "0.4.24-20213623619"
+    "@firebase/component" "0.4.0"
+    "@firebase/installations" "0.4.24"
     "@firebase/logger" "0.2.6"
     "@firebase/util" "0.4.1"
     tslib "^2.1.0"
@@ -1564,9 +1564,9 @@
   integrity sha512-L/ZnJRAq7F++utfuoTKX4CLBG5YR7tFO3PLzG1/oXXKEezJ0kRL3CMRoueBEmTCzVb/6SIs2Qlaw++uDgi5Xyg==
 
 "@firebase/app-types@0.6.2":
-  version "0.6.2-20213623619"
-  resolved "https://registry.yarnpkg.com/@firebase/app-types/-/app-types-0.6.2-20213623619.tgz#e7b19ac191d7912918c38141afb21e8f149335a7"
-  integrity sha512-M0Tg+07u1jLIUqSadNGOJccpNTZOW2D/LxwOYIiblcScpbgbr20vIkSjYTdQEGSF9U4LXW7bBRYGC5lsphOyBQ==
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/@firebase/app-types/-/app-types-0.6.2.tgz#8578cb1061a83ced4570188be9e225d54e0f27fb"
+  integrity sha512-2VXvq/K+n8XMdM4L2xy5bYp2ZXMawJXluUIDzUBvMthVR+lhxK4pfFiqr1mmDbv9ydXvEAuFsD+6DpcZuJcSSw==
 
 "@firebase/app@0.6.19":
   version "0.6.19"
@@ -1610,14 +1610,6 @@
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/@firebase/component/-/component-0.4.0.tgz#90baa455d75160c8a5134b3e9d642df11f0ac818"
   integrity sha512-L7kLKpW1v5qxPfIhx/VqHuVi+vr5IcnDS4zCJFb+/eYe23i6czSOWR1urAoJ4r42Dk0XB5kDt6Idojdd9BGMEA==
-  dependencies:
-    "@firebase/util" "0.4.1"
-    tslib "^2.1.0"
-
-"@firebase/component@0.4.0-20213623619":
-  version "0.4.0-20213623619"
-  resolved "https://registry.yarnpkg.com/@firebase/component/-/component-0.4.0-20213623619.tgz#1d7bd9fb0525441540fcc7bcdbbf9f8cf3717477"
-  integrity sha512-Q35b/ZpUWOOYdFK2Xz4UYCOHnXIM4QYPmujBpR0hi+yoshGDdunIGwRrQob2cXdYip6fZia//67W8DolYPPg0g==
   dependencies:
     "@firebase/util" "0.4.1"
     tslib "^2.1.0"
@@ -1668,11 +1660,11 @@
   integrity sha512-5kZZtQ32FIRJP1029dw+ZVNRCclKOErHv1+Xn0pw/5Fq3dxroA/ZyFHqDu+uV52AyWHhNLjCqX43ibm4YqOzRw==
 
 "@firebase/firestore@2.2.3":
-  version "2.2.3-20213623619"
-  resolved "https://registry.yarnpkg.com/@firebase/firestore/-/firestore-2.2.3-20213623619.tgz#0b1f1b5276525cfaaa1c666b4a1ff2b8256073fc"
-  integrity sha512-owL+68mc77aHIe2yxJBgtdU+htvt/qa7d9vK+ooEQKHBx88aIc2w4mgqclkKvvN382HoaYemJshKJALZZ6aalQ==
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/@firebase/firestore/-/firestore-2.2.3.tgz#e76d9191c48ef4c51ae73c2fcce7d547be2a8c17"
+  integrity sha512-efJxJahP9936QlIHeATvatCO4c3UEk6nz7pc812xxkgTVezkg8K66IDUe0fncV70zbDrIyxUIl8yRcxhXytiGw==
   dependencies:
-    "@firebase/component" "0.4.0-20213623619"
+    "@firebase/component" "0.4.0"
     "@firebase/firestore-types" "2.2.0"
     "@firebase/logger" "0.2.6"
     "@firebase/util" "0.4.1"
@@ -1714,17 +1706,6 @@
     idb "3.0.2"
     tslib "^2.1.0"
 
-"@firebase/installations@0.4.24-20213623619":
-  version "0.4.24-20213623619"
-  resolved "https://registry.yarnpkg.com/@firebase/installations/-/installations-0.4.24-20213623619.tgz#05fd42dbfd8ffb6ec547ed28d5d33a531d4ccbe8"
-  integrity sha512-d5o3QtZi6PPFsngiYwV9R6bE2jdOBIUghc0nquWJAADL/fzj8FiNP+LnHIMI4agJ9R982l9cyUVE1aDCCQXFyw==
-  dependencies:
-    "@firebase/component" "0.4.0-20213623619"
-    "@firebase/installations-types" "0.3.4"
-    "@firebase/util" "0.4.1"
-    idb "3.0.2"
-    tslib "^2.1.0"
-
 "@firebase/logger@0.2.6":
   version "0.2.6"
   resolved "https://registry.yarnpkg.com/@firebase/logger/-/logger-0.2.6.tgz#3aa2ca4fe10327cabf7808bd3994e88db26d7989"
@@ -1753,12 +1734,12 @@
   integrity sha512-6fZfIGjQpwo9S5OzMpPyqgYAUZcFzZxHFqOyNtorDIgNXq33nlldTL/vtaUZA8iT9TT5cJlCrF/jthKU7X21EA==
 
 "@firebase/performance@0.4.10":
-  version "0.4.10-20213623619"
-  resolved "https://registry.yarnpkg.com/@firebase/performance/-/performance-0.4.10-20213623619.tgz#f4e71d21b78830ec9d2b7f433ce50c5ab7dd5c33"
-  integrity sha512-QjGOiCTAFVQPrcxL75rawR5rXbbVD4mpUlMdFwoG6I1XHvst++tRmYO8ofoNNHbM5iyi/Lc1m5kcvY399FlelQ==
+  version "0.4.10"
+  resolved "https://registry.yarnpkg.com/@firebase/performance/-/performance-0.4.10.tgz#c78ed1c15c26884eae23edf1498e930bb729b51f"
+  integrity sha512-gyAOd9Z/GVlLE5V8U5pVQDZpjr4Msdx5yJr7oQE/xkh6dNZGuYp5qJh1pAmJs2ZI8eMTs+j2bXJEMYk6w7ehRg==
   dependencies:
-    "@firebase/component" "0.4.0-20213623619"
-    "@firebase/installations" "0.4.24-20213623619"
+    "@firebase/component" "0.4.0"
+    "@firebase/installations" "0.4.24"
     "@firebase/logger" "0.2.6"
     "@firebase/performance-types" "0.0.13"
     "@firebase/util" "0.4.1"
@@ -2336,6 +2317,13 @@ available-typed-arrays@^1.0.2:
   integrity sha512-XWX3OX8Onv97LMk/ftVyBibpGwY5a8SmuxZPzeOxqmuEqUCOM9ZE+uIaD1VNJ5QnvU2UQusvmKbuM1FR8QWGfQ==
   dependencies:
     array-filter "^1.0.0"
+
+axios@^0.21.1:
+  version "0.21.1"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.1.tgz#22563481962f4d6bde9a76d516ef0e5d3c09b2b8"
+  integrity sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==
+  dependencies:
+    follow-redirects "^1.10.0"
 
 babel-plugin-dynamic-import-node@^2.3.3:
   version "2.3.3"
@@ -3252,6 +3240,11 @@ focus-lock@^0.8.1:
   integrity sha512-/LFZOIo82WDsyyv7h7oc0MJF9ACOvDRdx9rWPZ2pgMfNWu/z8hQDBtOchuB/0BVLmuFOZjV02YwUVzNsWx/EzA==
   dependencies:
     tslib "^1.9.3"
+
+follow-redirects@^1.10.0:
+  version "1.13.3"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.13.3.tgz#e5598ad50174c1bc4e872301e82ac2cd97f90267"
+  integrity sha512-DUgl6+HDzB0iEptNQEXLx/KhTmDb8tZUHSeLqpnjpknR70H0nC2t9N73BK6fN4hOvJ84pKlIQVQ4k5FFlBedKA==
 
 foreach@^2.0.5:
   version "2.0.5"

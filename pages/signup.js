@@ -15,8 +15,9 @@ import {
   InputLeftAddon,
 } from "@chakra-ui/react";
 
-import { firebaseClient } from "../config/firebase/client";
-import { Logo } from "../components";
+import { Logo, useAuth } from "../components";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 const validationSchema = yup.object().shape({
   email: yup
@@ -28,13 +29,11 @@ const validationSchema = yup.object().shape({
 });
 
 export default function Signup() {
+  const [auth, { signup }] = useAuth();
+  const router = useRouter();
+
   const formik = useFormik({
-    onSubmit: async (values, form) => {
-      const user = await firebaseClient
-        .auth()
-        .createUserWithEmailAndPassword(values.email, values.password);
-      console.log("user", user);
-    },
+    onSubmit: signup,
     validationSchema,
     initialValues: {
       email: "",
@@ -42,6 +41,10 @@ export default function Signup() {
       username: "",
     },
   });
+
+  useEffect(() => {
+    auth.user && router.push("/agenda");
+  }, [auth.user]);
 
   return (
     <Container centerContent p={4}>
@@ -107,7 +110,7 @@ export default function Signup() {
           </Button>
         </Box>
       </Box>
-      <Link href="/">
+      <Link href="/login">
         <a>Já tem uma conta? Faça o login</a>
       </Link>
     </Container>

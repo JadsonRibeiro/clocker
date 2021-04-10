@@ -13,8 +13,9 @@ import {
   FormHelperText,
 } from "@chakra-ui/react";
 
-import { persistenceMode, firebaseClient } from "../../config/firebase/client";
-import { Logo } from "../Logo";
+import { Logo, useAuth } from "./../components";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 const validationSchema = yup.object().shape({
   email: yup
@@ -24,21 +25,23 @@ const validationSchema = yup.object().shape({
   password: yup.string().required("Preenchimento obrigatório"),
 });
 
-export const Login = () => {
+export default function Login() {
+  const [auth, { login }] = useAuth();
+  const router = useRouter();
+
   const formik = useFormik({
-    onSubmit: async (values, form) => {
-      firebaseClient.auth().setPersistence(persistenceMode);
-      const user = await firebaseClient
-        .auth()
-        .signInWithEmailAndPassword(values.email, values.password);
-      console.log("user", user);
-    },
+    onSubmit: login,
     validationSchema,
     initialValues: {
       email: "",
       password: "",
     },
   });
+
+  useEffect(() => {
+    console.log("Auth", auth);
+    auth.user && router.push("/agenda");
+  }, [auth.user]);
 
   return (
     <Container centerContent p={4}>
@@ -92,4 +95,4 @@ export const Login = () => {
       </Link>
     </Container>
   );
-};
+}
