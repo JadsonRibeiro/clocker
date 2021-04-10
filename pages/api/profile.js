@@ -1,13 +1,13 @@
-import { firebaseServer } from "../../config/firebase/server";
+import { firebaseServer } from "./../../config/firebase/server";
 
 const db = firebaseServer.firestore();
-const collection = db.collection("profiles");
+const profile = db.collection("profiles");
 
 export default async (req, res) => {
   const [, token] = req.headers.authorization.split(" ");
   const { user_id } = await firebaseServer.auth().verifyIdToken(token);
 
-  collection.doc(req.body.username).set({
+  profile.doc(req.body.username).set({
     userId: user_id,
     username: req.body.username,
   });
