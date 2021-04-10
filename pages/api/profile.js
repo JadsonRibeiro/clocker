@@ -13,7 +13,8 @@ export default async (req, res) => {
       username: req.body.username,
     });
   } catch (e) {
-    console.error("Firestore error", e);
+    res.status(200).json({ message: e.message });
+    return;
   }
 
   res.status(200).json({ name: "John Doe" });
