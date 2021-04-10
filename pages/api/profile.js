@@ -7,10 +7,14 @@ export default async (req, res) => {
   const [, token] = req.headers.authorization.split(" ");
   const { user_id } = await firebaseServer.auth().verifyIdToken(token);
 
-  profile.doc(req.body.username).set({
-    userId: user_id,
-    username: req.body.username,
-  });
+  try {
+    profile.doc(req.body.username).set({
+      userId: user_id,
+      username: req.body.username,
+    });
+  } catch (e) {
+    console.error("Firestore error", e);
+  }
 
   res.status(200).json({ name: "John Doe" });
 };
