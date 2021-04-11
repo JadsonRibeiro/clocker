@@ -26,7 +26,13 @@ const setSchedule = async (data) => {
   });
 };
 
-function ModalTimeBlock({ isOpen, onClose, children, onComplete }) {
+function ModalTimeBlock({
+  isOpen,
+  onClose,
+  children,
+  onComplete,
+  isSubmitting,
+}) {
   return (
     <>
       <Modal isOpen={isOpen} onClose={onClose}>
@@ -37,7 +43,12 @@ function ModalTimeBlock({ isOpen, onClose, children, onComplete }) {
           <ModalBody>{children}</ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onComplete}>
+            <Button
+              colorScheme="blue"
+              mr={3}
+              onClick={onComplete}
+              isLoading={isSubmitting}
+            >
               Reservar Horário
             </Button>
             <Button variant="ghost">Cancelar</Button>
@@ -59,6 +70,7 @@ export const TimeBlock = ({ time }) => {
     handleBlur,
     touched,
     errors,
+    isSubmitting,
   } = useFormik({
     onSubmit: (values) => setSchedule({ ...values, when: time }),
     initialValues: {
@@ -80,6 +92,7 @@ export const TimeBlock = ({ time }) => {
         onClose={toggle}
         time={time}
         onComplete={handleSubmit}
+        isSubmitting={isSubmitting}
       >
         <>
           <Input
@@ -92,6 +105,7 @@ export const TimeBlock = ({ time }) => {
             onBlur={handleBlur}
             touched={touched.name}
             size="lg"
+            disabled={isSubmitting}
           />
           <Input
             label="Telefone"
@@ -104,6 +118,7 @@ export const TimeBlock = ({ time }) => {
             touched={touched.phone}
             size="lg"
             mt={4}
+            disabled={isSubmitting}
           />
         </>
       </ModalTimeBlock>

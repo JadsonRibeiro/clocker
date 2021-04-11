@@ -26,23 +26,21 @@ const getUserId = async (userName) => {
 };
 
 const setSchedule = async (req, res) => {
-  console.log("Requisição", req.body);
-
   const userId = await getUserId(req.body.username);
   const doc = await agenda.doc(`${userId}#${req.body.when}`).get();
 
   if (doc.exists) {
-    return res.status(400);
+    return res.status(400).json({ message: "Horário já reservado" });
   }
 
-  await agenda.doc(`${userId}#${req.body.when}`).set({
+  const block = await agenda.doc(`${userId}#${req.body.when}`).set({
     userId,
     when: req.body.when,
     name: req.body.name,
     phone: req.body.phone,
   });
 
-  return res.status(200);
+  return res.status(200).json(block);
 };
 
 const getSchedule = (req, res) => {
