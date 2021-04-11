@@ -8,9 +8,11 @@ import { Box, Button, Container, IconButton } from "@chakra-ui/react";
 
 import { Logo, useAuth, formatDate } from "../components";
 import { addDays, subDays } from "date-fns";
+import { getToken } from "../config/firebase/client";
 
-const getAgenda = ({ token, when }) =>
-  axios({
+const getAgenda = async ({ when }) => {
+  const token = await getToken();
+  return axios({
     method: "get",
     url: "/api/agenda",
     params: { when },
@@ -18,6 +20,7 @@ const getAgenda = ({ token, when }) =>
       Authorization: `Bearer ${token}`,
     },
   });
+};
 
 const Header = ({ children }) => {
   return (
