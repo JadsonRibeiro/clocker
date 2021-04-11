@@ -45,14 +45,23 @@ const setSchedule = async (req, res) => {
   return res.status(200).json(block);
 };
 
-const getSchedule = (req, res) => {
-  console.log(timeBlocks);
-
+const getSchedule = async (req, res) => {
   try {
-    // const snapshot = await db
-    //   .where("when", "==", req.query.when)
-    //   .get();
-    return res.status(200).json(timeBlocks);
+    const userId = await getUserId(req.query.username);
+
+    const snapshot = await agenda
+      .where("date", "==", req.query.date)
+      .where("userId", "==", userId)
+      .get();
+
+    const docs = snapshot.docs.map((doc) => doc.data());
+
+    const result = timeBlocks.map((time) => ({
+      time,
+      isBlocked: !!docs.find((doc) => doc.time === time),
+    }));
+
+    return res.status(200).json(result);
   } catch (e) {
     console.log("FB Error", e);
     return res.status(500);

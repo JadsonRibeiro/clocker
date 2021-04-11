@@ -14,13 +14,16 @@ import {
 } from "@chakra-ui/react";
 
 import { Logo, useAuth, formatDate, TimeBlock } from "../components";
-import { addDays, subDays } from "date-fns";
+import { addDays, format, subDays } from "date-fns";
 
 const getSchedule = async ({ when }) => {
   return axios({
     method: "get",
     url: "/api/schedule",
-    params: { when, username: window.location.pathname },
+    params: {
+      date: format(when, "yyyy-MM-dd"),
+      username: window.location.pathname.replace("/", ""),
+    },
   });
 };
 
@@ -84,8 +87,8 @@ export default function Agenda() {
             size="xl"
           />
         )}
-        {data?.map((time) => (
-          <TimeBlock key={time} time={time} date={when} />
+        {data?.map(({ time, isBlocked }) => (
+          <TimeBlock key={time} time={time} date={when} disabled={isBlocked} />
         ))}
       </SimpleGrid>
     </Container>
