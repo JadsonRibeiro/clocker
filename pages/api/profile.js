@@ -13,7 +13,7 @@ export default async (req, res) => {
       username: req.body.username,
     });
   } catch (e) {
-    res.status(200).json({ message: e.message });
+    res.status(500).json({ message: "Internal server error" });
     return;
   }
 
