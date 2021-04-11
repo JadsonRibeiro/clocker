@@ -13,7 +13,7 @@ import {
   Spinner,
 } from "@chakra-ui/react";
 
-import { Logo, useAuth, formatDate } from "../components";
+import { Logo, useAuth, formatDate, TimeBlock } from "../components";
 import { addDays, subDays } from "date-fns";
 
 const getSchedule = async ({ when }) => {
@@ -22,14 +22,6 @@ const getSchedule = async ({ when }) => {
     url: "/api/schedule",
     params: { when, username: window.location.pathname },
   });
-};
-
-const TimeBlock = ({ time }) => {
-  return (
-    <Button p={8} bg="blue.500" color="white">
-      {time}
-    </Button>
-  );
 };
 
 const Header = ({ children }) => {
