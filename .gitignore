@@ -32,3 +32,6 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+#firebase keys
+clocker-codar-me-firebase-adminsdk.json
