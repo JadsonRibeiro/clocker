@@ -1,5 +1,4 @@
 import { Button } from "@chakra-ui/button";
-
 import {
   Modal,
   ModalBody,
@@ -9,24 +8,36 @@ import {
   ModalHeader,
   ModalOverlay,
 } from "@chakra-ui/modal";
+import axios from "axios";
 import { useFormik } from "formik";
 import { useState } from "react";
 import * as yup from "yup";
 
 import { Input } from "../Input";
 
-function ModalTimeBlock({ isOpen, onClose, children }) {
+const setSchedule = async (data) => {
+  return axios({
+    method: "post",
+    url: "/api/schedule",
+    data: {
+      ...data,
+      username: window.location.pathname.replace("/", ""),
+    },
+  });
+};
+
+function ModalTimeBlock({ isOpen, onClose, children, onComplete }) {
   return (
     <>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
+          <ModalHeader>Reserve seu horário</ModalHeader>
           <ModalCloseButton />
           <ModalBody>{children}</ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
+            <Button colorScheme="blue" mr={3} onClick={onComplete}>
               Reservar Horário
             </Button>
             <Button variant="ghost">Cancelar</Button>
@@ -49,7 +60,7 @@ export const TimeBlock = ({ time }) => {
     touched,
     errors,
   } = useFormik({
-    onSubmit: () => {},
+    onSubmit: (values) => setSchedule({ ...values, when: time }),
     initialValues: {
       name: "",
       phone: "",
@@ -64,7 +75,12 @@ export const TimeBlock = ({ time }) => {
     <Button p={8} bg="blue.500" color="white" onClick={toggle}>
       {time}
 
-      <ModalTimeBlock isOpen={isOpen} onClose={toggle} time={time}>
+      <ModalTimeBlock
+        isOpen={isOpen}
+        onClose={toggle}
+        time={time}
+        onComplete={handleSubmit}
+      >
         <>
           <Input
             label="Nome"
