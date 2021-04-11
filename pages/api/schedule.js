@@ -20,7 +20,7 @@ for (let blockIndex = 0; blockIndex <= totalHours; blockIndex++) {
 const getUserId = async (userName) => {
   const profileDoc = await profile.where("username", "==", userName).get();
 
-  if (!profileDoc.length) {
+  if (!profileDoc.docs.length) {
     return false;
   }
 
