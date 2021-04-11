@@ -16,13 +16,13 @@ import {
 import { Logo, useAuth, formatDate, TimeBlock } from "../components";
 import { addDays, format, subDays } from "date-fns";
 
-const getSchedule = async ({ when }) => {
+const getSchedule = async ({ when, username }) => {
   return axios({
     method: "get",
     url: "/api/schedule",
     params: {
       date: format(when, "yyyy-MM-dd"),
-      username: window.location.pathname.replace("/", ""),
+      username,
     },
   });
 };
@@ -53,8 +53,8 @@ export default function Agenda() {
   const removeDay = () => setWhen((prevState) => subDays(prevState, 1));
 
   useEffect(() => {
-    fetch({ when });
-  }, [when]);
+    fetch({ when, username: router.query.username });
+  }, [when, router.query.username]);
 
   return (
     <Container>
