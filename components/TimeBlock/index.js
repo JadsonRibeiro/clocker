@@ -74,9 +74,9 @@ export const TimeBlock = ({ time, date, disabled, onSuccess }) => {
     errors,
     isSubmitting,
   } = useFormik({
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       try {
-        setSchedule({ ...values, date, time });
+        await setSchedule({ ...values, date, time });
         toggle();
         onSuccess();
       } catch (e) {
