@@ -4,18 +4,26 @@ import axios from "axios";
 import { useFetch } from "@refetty/react";
 
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
-import { Box, Button, Container, IconButton } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Container,
+  IconButton,
+  Spinner,
+  Text,
+} from "@chakra-ui/react";
 
 import { Logo, useAuth, formatDate } from "../components";
-import { addDays, subDays } from "date-fns";
+import { addDays, subDays, format } from "date-fns";
 import { getToken } from "../config/firebase/client";
 
 const getAgenda = async ({ when }) => {
   const token = await getToken();
+
   return axios({
     method: "get",
     url: "/api/agenda",
-    params: { when },
+    params: { date: format(when, "yyyy-MM-dd") },
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -35,6 +43,25 @@ const Header = ({ children }) => {
   );
 };
 
+const AgendaBlock = ({ time, name, phone, ...props }) => {
+  return (
+    <Box
+      display="flex"
+      bg="gray.100"
+      {...props}
+      alignItems="center"
+      p={4}
+      borderRadius={4}
+    >
+      <Box flex={1}>{time}</Box>
+      <Box textAlign="right">
+        <Text fontSize="2xl">{name}</Text>
+        <Text>{phone}</Text>
+      </Box>
+    </Box>
+  );
+};
+
 export default function Agenda() {
   const [auth, { logout }] = useAuth();
   const router = useRouter();
@@ -42,6 +69,8 @@ export default function Agenda() {
   const [data, { loading, status, error }, fetch] = useFetch(getAgenda, {
     lazy: true,
   });
+
+  console.log("Data", data);
 
   // prevState é usado para resolver problema de concorrencia do setState
   const addDay = () => setWhen((prevState) => addDays(prevState, 1));
@@ -75,6 +104,28 @@ export default function Agenda() {
           bg="transparent"
           onClick={addDay}
         />
+      </Box>
+
+      {loading && (
+        <Spinner
+          thickness="4px"
+          speed="0.65s"
+          emptyColor="gray.200"
+          color="blue.500"
+          size="xl"
+        />
+      )}
+
+      <Box>
+        {data?.map((doc) => (
+          <AgendaBlock
+            key={doc.time}
+            name={doc.name}
+            phone={doc.phone}
+            time={doc.time}
+            mt={4}
+          />
+        ))}
       </Box>
     </Container>
   );

@@ -48,7 +48,7 @@ export default function Signup() {
 
   return (
     <Container centerContent p={4}>
-      <Logo />
+      <Logo size={200} />
       <Text p={4}>Crie sua agenda compartilhada</Text>
 
       <Box>
